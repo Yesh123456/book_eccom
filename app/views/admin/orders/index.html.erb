@@ -1,0 +1,25 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Orders</h1>
+    <%= link_to "New order", new_admin_order_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+
+  <div class="mt-10 items-center">
+    <h3 class="font-bold text-lg">Not FullFilled Orders</h3>
+    <div class="mb-5">
+      <%= render "order_tables", admin_stock: @not_fullfiled_orders %>
+    </div>
+  </div>
+
+  <div class="mt-10 items-center">
+    <h3 class="font-bold text-lg">FullFilled Orders</h3>
+    <div class="mb-5">
+      <%= render "order_tables", admin_stock: @fullfiled_orders %>
+    </div>
+  </div>
+
+</div>

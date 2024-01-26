@@ -1,0 +1,67 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Stocks</h1>
+    <%= link_to "New stock", new_admin_product_stock_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+
+  <div class="fex flex-col w-full">
+    <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+      <div class="py-2 inline-block min-w-full">
+        <div class="overflow-x-auto">
+          <table class="min-w-full overflow-x-scroll">
+            <thead class="bg-white border-b">
+              <tr>
+                <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+                  Id
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+                  Product Image
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+                  Product Name
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+                  Amount
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+                  Size
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+                  Created At
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @admin_stocks.each do |stock| %>
+                <tr class="bg-gray-50 border-b">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                    <%= stock.id %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                    <%= @admin_product.images.any? ? image_tag(product.images.first.variant(:thumb)) : image_tag("https://via.placeholder.com/50") %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                    <%= link_to @admin_product.name, edit_admin_product_stock_path(stock.product, stock) %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 underline">
+                    $<%= (stock.amount/100.00).to_s %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                    <%= stock.size %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                    <%= stock.created_at %>
+                  </td>    
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
