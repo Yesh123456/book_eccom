@@ -6,9 +6,9 @@ class AdminController < ApplicationController
 		@orders = Order.where(full_filled: false).order(created_at: :desc).take(10)
 		@quick_view = {
 			sales: Order.where(created_at: Time.now.midnight..Time.now).count,
-			revenue: Order.where(created_at: Time.now.midnight..Time.now).sum(:total_amount).round(),
-			avg_order: Order.where(created_at: Time.now.midnight..Time.now).average(:total_amount).round(),
-			per_sale: OrderProduct.joins(:order).where(order: {created_at: Time.now.midnight..Time.now}).average(:quantity)
+			revenue: Order.where(created_at: Time.now.midnight..Time.now).sum(:total_amount)&.round(),
+			avg_order: Order.where(created_at: Time.now.midnight..Time.now).average(:total_amount)&.round(),
+			per_sale: OrderProduct.joins(:order).where(orders: { created_at: Time.now.midnight..Time.now })&.average(:quantity)
 		}
 		@orders_by_day = Order.where('created_at > ?',Time.now - 7.days).order(:created_at)
 		@orders_by_day = @orders_by_day.group_by { |order| order.created_at.to_date }
