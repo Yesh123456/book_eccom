@@ -22,12 +22,49 @@
   </div>
 
   <div class="my-5">
+    <%= form.label :author %>
+    <%= form.text_field :author, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :publisher %>
+    <%= form.text_field :publisher, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+ 
+  <div class="my-5">
+    <%= form.label :date_of_publication %>
+    <%= form.text_field :date_of_publication, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :edition %>
+    <%= form.text_field :edition, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :isbn_number %>
+    <%= form.text_field :isbn_number, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :weight %>
+    <%= form.text_field :weight, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :binding_type %>
+    <%= select_tag :binding_type, options_for_select(Product.binding_types.map {|k, v| [k.humanize.capitalize, v]},:binding_type), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+
+    <%# <%= form.text_field :book_binding_type, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :images %>
     <% if admin_product.images.any? %>
       <% admin_product.images.each do |image| %>
-        <%= image_tag image, class: 'w-20 h-20 object-cover rounded-md' %>
+        <%= image_tag image, class: 'w-20 h-20 mt-4 mb-4 object-cover rounded-md' %>
       <%end %>
     <% end %>
-    <%= form.label :images %>
     <%= form.file_field :images, multiple: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
@@ -44,10 +81,6 @@
   <div class="my-5">
     <%= form.label :active %>
     <%= form.check_box :active, class: "block mt-2 h-5 w-5" %>
-  </div>
-
-  <div class="my-5">
-    <%= link_to "Product Stock", admin_product_stocks_path(admin_product), class: 'underline' %>
   </div>
 
   <div class="inline">

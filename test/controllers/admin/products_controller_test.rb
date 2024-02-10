@@ -17,7 +17,12 @@ class Admin::ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create admin_product" do
     assert_difference("Admin::Product.count") do
-      post admin_products_url, params: { admin_product: { active: @admin_product.active, category_id: @admin_product.category_id, description: @admin_product.description, name: @admin_product.name, price: @admin_product.price, text: @admin_product.text } }
+      post admin_products_url, params: { admin_product: { active: @admin_product.active, 
+        category_id: @admin_product.category_id, description: @admin_product.description, 
+        name: @admin_product.name, price: @admin_product.price, author: @admin_product.author, 
+        publisher: @admin_product.publisher, date_of_publication: @admin_product.date_of_publication,
+        edition: @admin_product.edition, isbn_number: @admin_product.isbn_number,
+        weight: @admin_product.weight,binding_type: @admin_product.binding_type ,text: @admin_product.text } }
     end
 
     assert_redirected_to admin_product_url(Admin::Product.last)
@@ -34,7 +39,13 @@ class Admin::ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update admin_product" do
-    patch admin_product_url(@admin_product), params: { admin_product: { active: @admin_product.active, category_id: @admin_product.category_id, description: @admin_product.description, name: @admin_product.name, price: @admin_product.price, text: @admin_product.text } }
+    patch admin_product_url(@admin_product), params: { admin_product: { active: @admin_product.active, 
+      category_id: @admin_product.category_id, description: @admin_product.description,
+      name: @admin_product.name, price: @admin_product.price, author: @admin_product.author, 
+      publisher: @admin_product.publisher, date_of_publication: @admin_product.date_of_publication,
+      edition: @admin_product.edition, isbn_number: @admin_product.isbn_number,
+      weight: @admin_product.weight,binding_type: @admin_product.binding_type ,text: @admin_product.text } }
+    end
     assert_redirected_to admin_product_url(@admin_product)
   end
 

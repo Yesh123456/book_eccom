@@ -19,6 +19,13 @@ class Admin::ProductsTest < ApplicationSystemTestCase
     fill_in "Description", with: @admin_product.description
     fill_in "Name", with: @admin_product.name
     fill_in "Price", with: @admin_product.price
+    fill_in "Author", with: @admin_product.author
+    fill_in "Publisher", with: @admin_product.publisher
+    fill_in "Date Of Publication", with: @admin_product.date_of_publication
+    fill_in "Edition", with: @admin_product.edition
+    fill_in "ISBN Number", with: @admin_product.isbn_number
+    fill_in "Weight", with: @admin_product.weight
+    fill_in "Binding Type", with: @admin_product.binding_type
     fill_in "Text", with: @admin_product.text
     click_on "Create Product"
 
@@ -35,6 +42,13 @@ class Admin::ProductsTest < ApplicationSystemTestCase
     fill_in "Description", with: @admin_product.description
     fill_in "Name", with: @admin_product.name
     fill_in "Price", with: @admin_product.price
+    fill_in "Author", with: @admin_product.author
+    fill_in "Publisher", with: @admin_product.publisher
+    fill_in "Date Of Publication", with: @admin_product.date_of_publication
+    fill_in "Edition", with: @admin_product.edition
+    fill_in "ISBN Number", with: @admin_product.isbn_number
+    fill_in "Weight", with: @admin_product.weight
+    fill_in "Binding Type", with: @admin_product.binding_type
     fill_in "Text", with: @admin_product.text
     click_on "Update Product"
 

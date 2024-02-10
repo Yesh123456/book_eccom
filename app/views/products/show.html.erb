@@ -1,0 +1,20 @@
+<div class="min-h-screen flex justify-center gap-20 py-10 ">
+	<div class="flex flex-wrap max-w-lg">
+		<% @product.images.each do |product_img| %>
+			<%= image_tag(product_img, class: "w-auto h-64") %>
+		<% end %>
+	</div>
+
+	<div class="flex flex-col items-start max-w-sm">
+		<h1 class="font-bold text-4xl uppercase"><%= @product.name %></h1>
+		<p class="text-2xl mt-4">$<%= (@product.price/100.0).to_s %></p>
+		<p class="text-2xl mt-4">Author: <%= @product.author %> | Publisher: <%= @product.publisher %></p>
+		<p class="text-xl mt-4"><%= @product.description %></p>
+		<p class="text-xl mt-4"><%= @product.date_of_publication %></p>
+		<p class="text-xl mt-4"><%= @product.edition %></p>
+		<p class="text-xl mt-4">Book Weight: <%= @product.weight %></p>
+		<p class="text-xl mt-4">Book ISBN Number: <%= @product.isbn_number %></p>
+		<p class="text-xl mt-4"><%= @product.binding_type %></p>
+	</div>
+
+</div>

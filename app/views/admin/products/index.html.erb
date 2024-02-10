@@ -31,6 +31,12 @@
                   Price
                 </th>
                 <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+                  Author
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
+                  Publisher
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
                   Created At
                 </th>
               </tr>
@@ -45,13 +51,19 @@
                     <%= product.images.any? ? image_tag(product.images.first.variant(:thumb)) : image_tag("https://via.placeholder.com/50") %>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
-                    <%= link_to product.name, edit_admin_product_path(product) %>
+                    <%= link_to product.name, [:admin,product] %>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 underline">
                     <%= product.description %>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                     $ <%= (product.price/100.00).to_s %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                    <%= product.author %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                    <%= product.publisher %>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                     <%= product.created_at %>

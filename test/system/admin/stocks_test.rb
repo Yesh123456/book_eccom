@@ -16,7 +16,6 @@ class Admin::StocksTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @admin_stock.amount
     fill_in "Product", with: @admin_stock.product_id
-    fill_in "Size", with: @admin_stock.size
     click_on "Create Stock"
 
     assert_text "Stock was successfully created"
@@ -29,7 +28,6 @@ class Admin::StocksTest < ApplicationSystemTestCase
 
     fill_in "Amount", with: @admin_stock.amount
     fill_in "Product", with: @admin_stock.product_id
-    fill_in "Size", with: @admin_stock.size
     click_on "Update Stock"
 
     assert_text "Stock was successfully updated"
