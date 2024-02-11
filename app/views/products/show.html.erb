@@ -5,7 +5,7 @@
 		<% end %>
 	</div>
 
-	<div class="flex flex-col items-start max-w-sm">
+	<div data-controller="products" data-products-product-value= "<%= @product.to_json %>" class="flex flex-col items-start max-w-sm">
 		<h1 class="font-bold text-4xl uppercase"><%= @product.name %></h1>
 		<p class="text-2xl mt-4">$<%= (@product.price/100.0).to_s %></p>
 		<p class="text-2xl mt-4">Author: <%= @product.author %> | Publisher: <%= @product.publisher %></p>
@@ -15,6 +15,6 @@
 		<p class="text-xl mt-4">Book Weight: <%= @product.weight %></p>
 		<p class="text-xl mt-4">Book ISBN Number: <%= @product.isbn_number %></p>
 		<p class="text-xl mt-4"><%= @product.binding_type %></p>
+		<button data-action="click->products#addToCart" class="mt-8 inline-flex items-center justify-center px-5 py-3 border border-transparent font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Add to Cart</button>
 	</div>
-
 </div>
