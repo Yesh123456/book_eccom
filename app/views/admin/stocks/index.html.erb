@@ -25,7 +25,7 @@
                   Product Name
                 </th>
                 <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
-                  Amount
+                  Stock Quantity
                 </th>
                 <th scope="col" class="text-sm font-medium text-gray-800 px-6 py-4 text-left">
                   Created At
@@ -45,7 +45,7 @@
                     <%= link_to @admin_product.name, edit_admin_product_stock_path(stock.product, stock) %>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 underline">
-                    $<%= (stock.amount/100.00).to_s %>
+                    $<%= stock.stock_quantity %>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                     <%= stock.created_at %>

@@ -74,3 +74,4 @@ gem "devise", "~> 4.9"
 gem "byebug"
 
 gem "font-awesome-sass", "~> 6.5.1"
+gem "stripe", "~> 10.9"

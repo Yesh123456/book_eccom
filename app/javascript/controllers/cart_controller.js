@@ -44,4 +44,37 @@ export default class extends Controller {
     localStorage.setItem("cart", JSON.stringify(cart))
     window.location.reload() 
   }
+
+
+  checkout(){
+    console.log("checkout")
+    const cart = JSON.parse(localStorage.getItem("cart"))
+    const payload = {
+      authenticity_token: "",
+      cart: cart
+    }
+
+    const csrf_token = document.querySelector("[name='csrf-token']").content
+    fetch ("/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": csrf_token
+      },
+      body: JSON.stringify(payload)
+    }).then(response => {
+      if (response.ok) {
+        response.json().then(body => {
+          window.location.href = body.url
+        })
+      } else {
+        response.json().then(body => { 
+          const errorEl = document.createElement("div")
+          errorEl.innerText = `There was error in processing order ${body.error}`
+          let errorContainer = document.getElementById("errorContainer")
+          errorContainer.appendChild(errorEl)
+        })
+      }
+    })
+  }
 }

@@ -14,7 +14,7 @@ class Admin::StocksTest < ApplicationSystemTestCase
     visit admin_stocks_url
     click_on "New stock"
 
-    fill_in "Amount", with: @admin_stock.amount
+    fill_in "Amount", with: @admin_stock.stock_quantity
     fill_in "Product", with: @admin_stock.product_id
     click_on "Create Stock"
 
@@ -26,7 +26,7 @@ class Admin::StocksTest < ApplicationSystemTestCase
     visit admin_stock_url(@admin_stock)
     click_on "Edit this stock", match: :first
 
-    fill_in "Amount", with: @admin_stock.amount
+    fill_in "Amount", with: @admin_stock.stock_quantity
     fill_in "Product", with: @admin_stock.product_id
     click_on "Update Stock"
 
