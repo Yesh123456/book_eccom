@@ -44,6 +44,12 @@
               <% end %>
             </tbody>
           </table>
+          </br>
+          <% if admin_stock.first.full_filled? == true %>
+            <%== pagy_nav(@full_filled_pagy) if @full_filled_pagy.pages > 1 %>
+          <% else %>
+            <%== pagy_nav(@notfull_filled_pagy) if @notfull_filled_pagy.pages > 1 %>
+          <% end %>
         </div>
       </div>
     </div>

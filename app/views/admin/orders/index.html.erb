@@ -11,14 +11,14 @@
   <div class="mt-10 items-center">
     <h3 class="font-bold text-lg">Not FullFilled Orders</h3>
     <div class="mb-5">
-      <%= render "order_tables", admin_stock: @not_fullfiled_orders %>
+      <%= render "order_tables", {admin_stock: @not_fullfiled_orders}  %>
     </div>
   </div>
 
   <div class="mt-10 items-center">
     <h3 class="font-bold text-lg">FullFilled Orders</h3>
     <div class="mb-5">
-      <%= render "order_tables", admin_stock: @fullfiled_orders %>
+      <%= render "order_tables", {admin_stock: @fullfiled_orders } %>
     </div>
   </div>
 

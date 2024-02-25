@@ -24,10 +24,9 @@ class WebhooksController < ApplicationController
 		case event.type
 		when  'checkout.session.completed'
 			session = event.data.object
-			shipping_details = session["shipping_details"]
+			shipping_details = shipping["address"]
 			if shipping_details.present?
-				address = "#{shipping_details['address']['line1']}, #{shipping_details['address']['line2']},
-				#{shipping_details['address']['city']}, #{shipping_details['address']['state']}, #{shipping_details['address']['postal_code']}, #{shipping_details['address']['country']}"
+				address = "#{shipping_details.line1},#{ shipping_details.city }, #{ shipping_details.state }, #{ shipping_details.postal_code }, #{ shipping_details.country}"
 			else
 				address = ""
 			end

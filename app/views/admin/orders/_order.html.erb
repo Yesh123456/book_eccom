@@ -23,7 +23,6 @@
     <strong class="block font-medium mb-1">Products:</strong>
     <% order.order_products.each do |o_p| %>
       <%= o_p.product.name %>
-      <%= o_p.size %>
       <%= o_p.quantity %>
     <% end %>
   <% end %>

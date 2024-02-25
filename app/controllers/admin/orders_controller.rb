@@ -1,10 +1,10 @@
 class Admin::OrdersController < AdminController
   before_action :set_admin_order, only: %i[ show edit update destroy ]
-
+  include Pagy::Backend
   # GET /admin/orders or /admin/orders.json
   def index
-    @not_fullfiled_orders = @admin_orders = Order.where(full_filled: false).order(created_at: :asc)
-    @fullfiled_orders = @admin_orders = Order.where(full_filled: true).order(created_at: :asc)
+    @notfull_filled_pagy, @not_fullfiled_orders = pagy(Order.where(full_filled: false).order(created_at: :asc))
+    @full_filled_pagy, @fullfiled_orders = pagy(Order.where(full_filled: true).order(created_at: :asc), page_param: :page_fullfilled)
   end
 
   # GET /admin/orders/1 or /admin/orders/1.json

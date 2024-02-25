@@ -75,3 +75,5 @@ gem "byebug"
 
 gem "font-awesome-sass", "~> 6.5.1"
 gem "stripe", "~> 10.9"
+
+gem "pagy", "~> 7.0"

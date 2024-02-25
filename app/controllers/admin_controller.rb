@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
 	layout 'admin'
 	before_action :authenticate_admin!
+	include Pagy::Backend
 
 	def index
 		@orders = Order.where(full_filled: false).order(created_at: :desc).take(10)

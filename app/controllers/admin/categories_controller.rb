@@ -3,7 +3,11 @@ class Admin::CategoriesController < AdminController
 
   # GET /admin/categories or /admin/categories.json
   def index
-    @admin_categories = Category.all
+    if params[:query].present?
+      @category_pagy, @admin_categories = pagy(Category.where("name like ?","%#{params[:query]}%"))
+    else
+      @category_pagy, @admin_categories = pagy(Category.all)
+    end
   end
 
   # GET /admin/categories/1 or /admin/categories/1.json

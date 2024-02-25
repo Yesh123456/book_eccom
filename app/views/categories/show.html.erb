@@ -1,8 +1,23 @@
 <div class="min-h-screen flex justify-center">
+	<div class="flex flex-wrap mt-6 mb-6">
+		<%= form_with url: category_path(@category), method: :get do |f| %>
+			<h2 class="text-lg text-gray-800 mt-6 mb-5">
+				Filter
+			</h2>
+			<%= f.number_field :min, placeholder: "Min Price", class: "border border-gray-800 rounded-md p-2 w-32"%>
+			<div>
+				<%= f.number_field :max, placeholder: "Max Price", class: "border border-gray-800 rounded-md p-2 w-32 mt-4"%>
+			</div>
+		    <%= f.submit "Filter", class: "bg-gray-800 text-white rounded-md p-2 mt-2 w-32 cursor-pointer"%>
+
+			<div>
+				<%= form_with url: category_path(@category), method: :get do |f| %>
+		        	<%= f.submit "Clear", class: "bg-gray-800 text-white rounded-md p-2 mt-2 w-32 cursor-pointer" %>
+		    	<% end %>
+			</div>
+		<% end %>
+	</div>
 	<div class="flex flex-wrap flex-col mt-6">
-		<h2 class="text-lg text-gray-800">
-			Filter
-		</h2>
 		<div class="flex flex-wrap mt-6 grap-10 flex-grow justify-center items-start">
 			<% if @products.blank? %>
 				<p class="text-2xl text-left text-gray-800">No Products Found</p>
@@ -11,7 +26,7 @@
 					<%= link_to product_path(product) do %>
 						<div class="max-w-xs flex flex-col p-4 justify-center items-center ">
 							<%= product.images.first ? image_tag(product.images.first.variant(:medium), class: "rounded") : image_tag("http://via.placeholder.com/250", class: "rounded") %>
-							<p class="mt-6 font-medium text-gray-800 "><%= product.name %></p>
+							<p class="mt-6 font-medium text-gray-800 "><%= product.name %> ($<%= (product.price/100.00).to_s %>)</p>
 						</div>
 					<% end %>
 				<% end %>
